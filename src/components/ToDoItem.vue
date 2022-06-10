@@ -61,6 +61,7 @@ export default {
 <style scoped>
 .custom-bg-done {
   background-color: rgb(215, 247, 219);
+  text-decoration:line-through;
 }
 .custom-bg-not-done {
   background-color: rgb(250, 250, 212);
