@@ -9,14 +9,13 @@
         <button
           class="btn me-2 pb-1"
           :class="[todo.done ? 'btn-success' : 'btn-secondary']"
-          @click="toggleTodoDone(todo)"
-        >
+          @click="toggleTodoDone(todo)">
           <i class="fas fa-check"></i>
         </button>
-        <button class="btn btn-warning me-2 pb-1" @click="show = !show">
+        <button class="btn btn-warning me-2 pb-1" :disabled="todo.done" @click="show = !show">
           <i class="fas fa-edit"></i>
         </button>
-        <button class="btn btn-danger me-2 pb-1">
+        <button class="btn btn-danger me-2 pb-1" @click="removeItem(todo)">
           <i class="fas fa-times"></i>
         </button>
       </div>
@@ -44,6 +43,7 @@ export default {
     const store = useStore();
     const toggleTodoDone = (todo) => store.dispatch("toggleTodoDone", todo);
     const editTodo = (todo,value) => store.dispatch("editTodo", {todo,value});
+    const removeItem = (todo) => store.dispatch("removeItem",todo);
     function updateTodo(e){
         const value = e.target.value.trim();
         editTodo(props.todo,value)
@@ -53,7 +53,8 @@ export default {
       show,
       input,
       editTodo,
-      updateTodo
+      updateTodo,
+      removeItem
     };
   },
 };

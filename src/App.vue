@@ -6,6 +6,7 @@
           <h1>Todo App</h1>
         </div>
         <div class="card-body">
+        <AddItem/>
           <ToDoItem v-for="todo in todos" :key="todo.id" :todo="todo"/>
         </div>
       </div>
@@ -17,10 +18,12 @@
 import { computed } from '@vue/runtime-core';
 import { useStore } from 'vuex';
 import ToDoItem from "./components/ToDoItem.vue";
+import AddItem from "./components/AddItem.vue";
 export default {
   name: "App",
   components: {
     ToDoItem,
+    AddItem,
   },
   setup(){
     const store = useStore();
@@ -44,5 +47,10 @@ export default {
   width: 50vw;
   height: 100vh;
   margin: auto;
+}
+@media screen and (max-width: 600px) {
+  .todo-container {
+     width: 100vw;
+  }
 }
 </style>

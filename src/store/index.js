@@ -18,6 +18,12 @@ export const store = createStore({
         editTodo({commit},{todo,value}){
             commit("editTodo",{todo,text:value});
         },
+        removeItem({commit},todo){
+            commit("removeItem",todo);
+        },
+        addTodo({commit},newItem){
+            commit("addTodo",newItem);
+        }
     },
     mutations:{
         toggleTodoDone(state,{todo,done = todo.done}){
@@ -33,6 +39,13 @@ export const store = createStore({
                 ...todo,
                 text
             })
+        },
+        removeItem(state,todo){
+            const index = state.todos.indexOf(todo)
+            state.todos.splice(index,1)
+        },
+        addTodo(state,newItem){
+            state.todos.push(newItem)
         }
     },
 });
